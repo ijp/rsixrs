@@ -1,0 +1,21 @@
+(package rsixrs)
+(version 0 1 0)
+(category "Language")
+
+(synopsis "A base for creating languages")
+(description
+"This library is intended to be used for defining your own R6RS-based scheme language like Marco Maggi's (nausicaa) or Racket's racket/gui. It contains a library file showing all the procedures and macros defined in the R6RS, categorised by which library exports them.
+
+Alternatively, it could be used as a replacement for (rnrs), except that it also exports the contents of (rnrs eval), (rnrs mutable-pairs), (rnrs mutable-strings) and (rnrs r5rs).")
+
+(author "Ian Price")
+(email  "ianprice90@googlemail.com")
+(url "http://github.com/ijp/rsixrs")
+
+(license WTFPL)
+(license-file "COPYING")
+
+(code "rsixrs/main.sls")
+(symlink  ("rsixrs/main.sls" . "rsixrs.sls"))
+
+(schemes ikarus mosh ypsilon racket larceny)

@@ -1,0 +1,54 @@
+# About
+
+This file contains a list of all the filenames exported by the
+R6RS Libraries, sorted by which library exports them. It is
+intended to serve as a base for creating new (rnrs) equivalents
+in the same way as Racket allows you to use "languages" other than
+Scheme as the base for your program.
+
+Alternatively, it could be used as a replacement for (rnrs), except
+that it also exports the contents of (rnrs eval), (rnrs
+mutable-pairs), (rnrs mutable-strings) and (rnrs r5rs).
+
+
+# Install
+
+The current method of installation is to add the folder to the library
+path of your scheme, which is error prone. Or to get it off
+http://ucl.willdonnelly.net/ 
+
+# Notes
+
+If a procedure is commented out, it is already exported by a
+previously listed library
+
+Note that the procedures in this library that come from (rnrs) are
+automatically exported at levels 0 and 1 as (rnrs) exports them at
+those levels. It is unfortunate that there is no easy way to do this
+with your own code, but it can be done.
+
+Suppose I have a file exporty.sls that exports a foo function
+#!r6rs
+(library (exporty)
+(export foo)
+(import (rnrs base))
+(define (foo)
+  "foo")
+)
+and a file exporty2.sls with the following code
+#!r6rs
+(library (exporty2)
+(export foo)
+(import (for (exporty) 0)
+        (for (exporty) 1)))
+
+It is my understanding of the R6RS that if you then
+(import (exporty2))
+in a program then `foo' will be available at levels 0 and 1.
+
+
+# Contact
+
+If I have missed a procedure or macro when reading through the R6RS or
+I have made some other error, please feel free to email me at
+ianprice90@googlemail.com
